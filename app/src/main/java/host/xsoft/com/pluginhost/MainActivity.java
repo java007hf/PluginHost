@@ -10,6 +10,7 @@ import android.widget.Toast;
 
 import com.limpoxe.fairy.manager.PluginManagerHelper;
 import com.limpoxe.fairy.util.FileUtil;
+import com.tencent.smtt.sdk.WebView;
 
 import java.io.IOException;
 import java.io.InputStream;
@@ -25,6 +26,12 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        initViews();
+    }
+
+    private void initViews() {
+		WebView webView = (WebView) findViewById(R.id.webviews);
+		webView.loadUrl("file:///android_asset/webpage/sport/html/heart_five.html");
 
         mInstallBtn = (Button)findViewById(R.id.install);
         mStartBtn = (Button)findViewById(R.id.start);
@@ -45,12 +52,13 @@ public class MainActivity extends AppCompatActivity {
         mStartBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (PluginManagerHelper.isInstalled(PLUGIN_PKGNAME)) {
+                if (!PluginManagerHelper.isInstalled(PLUGIN_PKGNAME)) {
                     Toast.makeText(MainActivity.this, "插件还未安装", Toast.LENGTH_SHORT).show();
                 } else {
                     Toast.makeText(MainActivity.this, "启动插件", Toast.LENGTH_SHORT).show();
 
                     Intent launchIntent = getPackageManager().getLaunchIntentForPackage(PLUGIN_PKGNAME);
+                    launchIntent.setAction("com.example.test_webview_demo.MainActivity");
                     startActivity(launchIntent);
                 }
             }

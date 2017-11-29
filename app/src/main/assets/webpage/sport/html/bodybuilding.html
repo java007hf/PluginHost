@@ -1,0 +1,63 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>健身详情</title>
+    <link rel="stylesheet" href="../public/css/reset.css">
+    <link rel="stylesheet" href="../public/css/index_bodybuilding.css">
+    <script src="../public/js/generalRem.js" type="text/javascript"></script>
+</head>
+<body>
+<div class="container">
+    <div id="building-banner" class="building-banner">
+        <div class="building-box-title">
+            <a href="train_bodybuilding.html" style="display: block;width: 100%;height: 100%;">
+                <span class="building-title">Hit 全身燃脂初级</span>
+                <span class="building-num">训练动作：&nbsp;个</span>
+            </a>
+        </div>
+    </div>
+    <div class="running-date-box">
+        <div class="pace-data-box">
+            <div class="pace-data-normal">
+                <div class="pace-normal-content">
+                    <span>&nbsp;</span>
+                    时长(分钟)
+                </div>
+            </div>
+            <div class="pace-data-normal">
+                <div class="pace-normal-content pace-normal-content-right">
+                    <span>&nbsp;</span>
+                    消耗(千卡)
+                </div>
+            </div>
+        </div>
+        <div class="line-box"></div>
+    </div>
+    <!--心率五区间占比-->
+    <div class="chart-box chart-box-heart">
+        <div class="chart-box-title">
+            心率五区间占比 <a href="heart_five.html" style="-webkit-tap-highlight-color: transparent;"><img
+                src="../public/images/ic_info_black_normal@2x.png"
+                style="position: relative;width: 0.48rem;height: 0.48rem;vertical-align: middle;top: -0.04rem;left: 0.2rem"></a>
+        </div>
+        <div class="bar-chart" id="heart-chart" style="width: 100%; height: 100%"></div>
+    </div>
+    <!--实时心率-->
+    <div class="chart-box chart-box-real-heart chart-box-bigger">
+        <div class="chart-box-title">
+            实时心率
+            <span>（次/分）</span>
+        </div>
+        <div class="line-chart" id="heart-real-chart" style="width: 100%; height: 80%;margin-top: 10%"></div>
+    </div>
+</div>
+
+<script src="../public/comm/jquery.min.js" type="text/javascript"></script>
+<script src="../public/comm/highcharts.min.js"></script>
+<script src="../public/js/index_bodybuilding.js" type="text/javascript"></script>
+</body>
+</html>

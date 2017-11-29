@@ -88,7 +88,6 @@ public class PluginManagerProvider extends ContentProvider {
     private PluginManagerService managerService;
     private PluginStatusChangeListener changeListener;
 
-
     public static Uri buildUri() {
         if (CONTENT_URI == null) {
             CONTENT_URI = Uri.parse("content://"+ FairyGlobal.getHostApplication().getPackageName() + ".managerService" + "/call");

@@ -1,0 +1,138 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+    <meta charset="utf-8"/>
+    <meta name="viewport"
+          content="width=device-width,user-scalable=no,initial-scale=1,minimum-scale=1,maximum-scale=1"/>
+    <title>心率说明</title>
+    <meta name="author" content="mikoyin"/>
+    <meta name="keywords" content=""/>
+    <meta name="description" content=""/>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        html {
+            width: 100%;
+            height: 100%;
+        }
+
+        body {
+            margin: 0;
+            width: 100%;
+            box-sizing: border-box;
+            padding: 0px 20px 24px 20px;
+            color: rgba(0, 0, 0, 0.80);
+            font-weight: 400;
+            font-style: normal;
+        }
+
+        h1 {
+            margin-top: 24px;
+            font-weight: bold;
+            font-size: 16px;
+            letter-spacing: 0;
+            line-height: 20px;
+            text-align: center;
+        }
+
+        h2 {
+            margin-top: 24px;
+            padding-bottom: 2px;
+            font-weight: bold;
+            font-size: 16px;
+            letter-spacing: 0;
+            line-height: 20px;
+        }
+
+        h2 i {
+            font-style: normal;
+            font-size: 12px;
+            padding-left: 5px;
+        }
+
+        p {
+            font-size: 14px;
+            line-height: 21px;
+            margin-top: 8px;
+            padding-bottom: 6px;
+            text-align: justify;
+        }
+
+    </style>
+</head>
+
+<body>
+
+<div class="content">
+    <div class="language-zh">
+        <h2>静息心率：</h2>
+        <p>静息心率是指正常人在清醒且不活动的状态下每分钟心跳的次数，一般在早晨醒来时测得的结果更为准确。成年人的静息心率一般在50~90次/分之间，运动员或有运动习惯者稍微偏低。</p>
+        <h2>日常心率：</h2>
+        <p>心率是指正常人每分钟心跳的次数，成年人的日常心率一般在60~100次/分之间，运动时心跳会加速。心肺功能较好的运动员比普通人的心跳要慢。</p>
+    </div>
+    <div class="language-en">
+        <h2>Resting heartrate：</h2>
+        <p>Resting heart rate is normal in the quiet state of the number of heartbeat per minute, the normal range is 50 to 90 times / min, regular exercise may be less than 50 times / min.</p>
+        <h2>Daily heartrate：</h2>
+        <p>The watch defaults every 10 minutes to measure real-time heart rate, daily daily heart rate range between the highest and lowest heart rate, usually in the range of 45 to 165 times / min are normal.</p>
+    </div>
+    <div class="language-hk">
+        <h2>靜息心率：</h2>
+        <p>靜息心率是指正常人在清醒且不活動的狀態下每分鐘心跳的次數，壹般在早晨醒來時測得的結果更為準確。成年人的靜息心率壹般在50~90次/分之間，運動員或有運動習慣者稍微偏低。</p>
+        <h2>日常心率：</h2>
+        <p>心率是指正常人每分鐘心跳的次數，成年人的日常心率壹般在60~100次/分之間，運動時心跳會加速。心肺功能較好的運動員比普通人的心跳要慢。</p>
+    </div>
+</div>
+<script src="../public/comm/jquery.min.js" type="text/javascript"></script>
+<script>
+
+    (function () {
+        var URL_PARAMS;
+        $.getParam = function (str) {
+            if (!URL_PARAMS) {
+                URL_PARAMS = {};
+                var params = location.search;
+                $.each(params.substring(1).split("&"), function (i, v) {
+                    var pos = v.indexOf("=");
+                    var key = v.substring(0, pos);
+                    var val = v.substring(pos + 1);
+                    key = decodeURIComponent(key);
+                    val = decodeURIComponent(val);
+                    URL_PARAMS[key] = val;
+                })
+            }
+
+            return URL_PARAMS[str] || '';
+        };
+    })();
+
+    (function (document, window, $) {
+
+        var language = $.getParam('language');
+
+        if(language === 'zh_cn'){
+            $('.language-en').hide();
+            $('.language-hk').hide();
+            document.title = '心率说明'
+        }else if(language === 'en'){
+            $('.language-zh').hide();
+            $('.language-hk').hide();
+            document.title = 'Heart rate specification'
+        }else if(language === 'zh_tw' || language === 'zh_hk'){
+            $('.language-zh').hide();
+            $('.language-en').hide();
+            document.title = '心率說明'
+        }else {
+            $('.language-zh').hide();
+            $('.language-hk').hide();
+            document.title = '心率说明'
+        }
+
+    })(document, window, $);
+
+</script>
+</body>
+</html>

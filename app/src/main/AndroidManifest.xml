@@ -4,8 +4,10 @@
 
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
     <uses-permission android:name="android.permission.MOUNT_UNMOUNT_FILESYSTEMS"/>
+    <uses-permission android:name="android.permission.INTERNET" />
 
     <application
+        android:name=".TheApplication"
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
@@ -17,6 +19,427 @@
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+
+        <provider
+            android:name="com.limpoxe.fairy.manager.PluginManagerProvider"
+            android:authorities="host.xsoft.com.pluginhost.managerService"
+            android:exported="false"
+            android:process=":plugin" />
+
+        <provider
+            android:name="com.limpoxe.support.servicemanager.ServiceProvider"
+            android:authorities="host.xsoft.com.pluginhost.svcmgr"
+            android:exported="false"/>
+
+        <!--
+            对Receiver的类全名没有要求，可随意指定，框架中是通过action来查询。
+            stub并不需要真实存在，只是占个位置，注册1个即可
+        -->
+        <receiver
+            android:name="host.xsoft.com.pluginhost.stub.PluginStubReceiver0"
+            android:exported="true"
+            android:process=":plugin">
+            <intent-filter>
+                <action android:name="host.xsoft.com.pluginhost.STUB_DEFAULT" />
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </receiver>
+
+        <!--
+            对service的类全名没有要求，可随意指定，框架中是通过action来查询。
+            需要注册的stub数量只需 >= 可能 同时 处于运行状态的service数量
+            最糟糕的情况是所有的service都 同时 处于运行状态，那么这种情况下 需要注册的stub数量即为所有插件所有service的总和
+            stub并不需要真实存在，只是占个位置，预注册10来个应该绰绰有余了
+        -->
+        <service
+            android:name="host.xsoft.com.pluginhost.stub.PluginStubService0"
+            android:process=":plugin">
+            <intent-filter>
+                <action android:name="host.xsoft.com.pluginhost.STUB_DEFAULT" />
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </service>
+
+        <service
+            android:name="host.xsoft.com.pluginhost.stub.PluginStubService1"
+            android:process=":plugin">
+            <intent-filter>
+                <action android:name="host.xsoft.com.pluginhost.STUB_DEFAULT" />
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </service>
+
+        <service
+            android:name="host.xsoft.com.pluginhost.stub.PluginStubService2"
+            android:process=":plugin">
+            <intent-filter>
+                <action android:name="host.xsoft.com.pluginhost.STUB_DEFAULT" />
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </service>
+
+        <service
+            android:name="host.xsoft.com.pluginhost.stub.PluginStubService3"
+            android:process=":plugin">
+            <intent-filter>
+                <action android:name="host.xsoft.com.pluginhost.STUB_DEFAULT" />
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </service>
+
+        <service
+            android:name="host.xsoft.com.pluginhost.stub.PluginStubService4"
+            android:process=":plugin">
+            <intent-filter>
+                <action android:name="host.xsoft.com.pluginhost.STUB_DEFAULT" />
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </service>
+
+        <service
+            android:name="host.xsoft.com.pluginhost.stub.PluginStubService5"
+            android:process=":plugin">
+            <intent-filter>
+                <action android:name="host.xsoft.com.pluginhost.STUB_DEFAULT" />
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </service>
+
+        <service
+            android:name="host.xsoft.com.pluginhost.stub.PluginStubService6"
+            android:process=":plugin">
+            <intent-filter>
+                <action android:name="host.xsoft.com.pluginhost.STUB_DEFAULT" />
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </service>
+
+        <service
+            android:name="host.xsoft.com.pluginhost.stub.PluginStubService7"
+            android:process=":plugin">
+            <intent-filter>
+                <action android:name="host.xsoft.com.pluginhost.STUB_DEFAULT" />
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </service>
+
+        <service
+            android:name="host.xsoft.com.pluginhost.stub.PluginStubService8"
+            android:process=":plugin">
+            <intent-filter>
+                <action android:name="host.xsoft.com.pluginhost.STUB_DEFAULT" />
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </service>
+
+        <service
+            android:name="host.xsoft.com.pluginhost.stub.PluginStubService9"
+            android:process=":plugin">
+            <intent-filter>
+                <action android:name="host.xsoft.com.pluginhost.STUB_DEFAULT" />
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </service>
+
+
+        <!--
+            对Activity的类全名没有要求，可随意指定，框架中是通过action来查询。
+            stub并不需要真实存在，只是占个位置，
+            standard 的 launchmode只需全透明和非全透明各注册1个stub即可
+        -->
+        <activity
+            android:name="host.xsoft.com.pluginhost.stub.PluginStubActivityStandard0"
+            android:exported="true"
+            android:process=":plugin"
+            android:theme="@android:style/Theme.Translucent">
+            <intent-filter>
+                <action android:name="host.xsoft.com.pluginhost.STUB_DEFAULT" />
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+        <!-- 不透 -->
+        <activity
+            android:name="host.xsoft.com.pluginhost.stub.PluginStubActivityStandard1"
+            android:exported="true"
+            android:process=":plugin"
+            android:theme="@android:style/Theme">
+            <intent-filter>
+                <action android:name="host.xsoft.com.pluginhost.STUB_DEFAULT" />
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name="host.xsoft.com.pluginhost.stub.PluginStubActivityStandard2"
+            android:exported="true"
+            android:process=":plugin"
+            android:screenOrientation="landscape"
+            android:configChanges="screenSize|orientation"
+            android:theme="@android:style/Theme">
+            <intent-filter>
+                <action android:name="host.xsoft.com.pluginhost.STUB_DEFAULT" />
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+        <!--
+            singleTask 的 launchmode
+            需要注册的stub数量只需 >= 可能 同时 处于运行状态的singleTask模式的Activity的数量
+            最糟糕的情况是所有的singleTask模式的Activity都 同时 处于运行状态，那么这种情况下 需要注册的stub数量即为所有插件所有singleTask模式的Activity的总和
+            预注册10个应该绰绰有余了
+        -->
+        <activity
+            android:name="host.xsoft.com.pluginhost.stub.PluginStubActivitySingleTask0"
+            android:exported="true"
+            android:launchMode="singleTask"
+            android:process=":plugin">
+            <intent-filter>
+                <action android:name="host.xsoft.com.pluginhost.STUB_DEFAULT" />
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+
+        <activity
+            android:name="host.xsoft.com.pluginhost.stub.PluginStubActivitySingleTask1"
+            android:exported="true"
+            android:launchMode="singleTask"
+            android:process=":plugin">
+            <intent-filter>
+                <action android:name="host.xsoft.com.pluginhost.STUB_DEFAULT" />
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+
+        <activity
+            android:name="host.xsoft.com.pluginhost.stub.PluginStubActivitySingleTask2"
+            android:exported="true"
+            android:launchMode="singleTask"
+            android:process=":plugin">
+            <intent-filter>
+                <action android:name="host.xsoft.com.pluginhost.STUB_DEFAULT" />
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+
+        <activity
+            android:name="host.xsoft.com.pluginhost.stub.PluginStubActivitySingleTask3"
+            android:exported="true"
+            android:launchMode="singleTask"
+            android:process=":plugin">
+            <intent-filter>
+                <action android:name="host.xsoft.com.pluginhost.STUB_DEFAULT" />
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+
+        <activity
+            android:name="host.xsoft.com.pluginhost.stub.PluginStubActivitySingleTask4"
+            android:exported="true"
+            android:launchMode="singleTask"
+            android:process=":plugin">
+            <intent-filter>
+                <action android:name="host.xsoft.com.pluginhost.STUB_DEFAULT" />
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+
+        <activity
+            android:name="host.xsoft.com.pluginhost.stub.PluginStubActivitySingleTask5"
+            android:exported="true"
+            android:launchMode="singleTask"
+            android:process=":plugin">
+            <intent-filter>
+                <action android:name="host.xsoft.com.pluginhost.STUB_DEFAULT" />
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+
+        <activity
+            android:name="host.xsoft.com.pluginhost.stub.PluginStubActivitySingleTask6"
+            android:exported="true"
+            android:launchMode="singleTask"
+            android:process=":plugin">
+            <intent-filter>
+                <action android:name="host.xsoft.com.pluginhost.STUB_DEFAULT" />
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+
+        <activity
+            android:name="host.xsoft.com.pluginhost.stub.PluginStubActivitySingleTask7"
+            android:exported="true"
+            android:launchMode="singleTask"
+            android:process=":plugin">
+            <intent-filter>
+                <action android:name="host.xsoft.com.pluginhost.STUB_DEFAULT" />
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+
+        <activity
+            android:name="host.xsoft.com.pluginhost.stub.PluginStubActivitySingleTask8"
+            android:exported="true"
+            android:launchMode="singleTask"
+            android:process=":plugin">
+            <intent-filter>
+                <action android:name="host.xsoft.com.pluginhost.STUB_DEFAULT" />
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+
+        <activity
+            android:name="host.xsoft.com.pluginhost.stub.PluginStubActivitySingleTask9"
+            android:exported="true"
+            android:launchMode="singleTask"
+            android:process=":plugin">
+            <intent-filter>
+                <action android:name="host.xsoft.com.pluginhost.STUB_DEFAULT" />
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+
+
+        <!--
+            singleTop 的 launchmode
+            需要注册的stub数量只需 >= 可能 同时 处于运行状态的 singleTop 模式的Activity的数量
+            最糟糕的情况是所有的 singleTop 模式的Activity都 同时 处于运行状态，那么这种情况下 需要注册的stub数量即为所有插件所有 singleTop 模式的Activity的总和
+            预注册5个应该绰绰有余了
+            -->
+        <activity
+            android:name="host.xsoft.com.pluginhost.stub.PluginStubActivitySingleTop0"
+            android:exported="true"
+            android:launchMode="singleTop"
+            android:process=":plugin">
+            <intent-filter>
+                <action android:name="host.xsoft.com.pluginhost.STUB_DEFAULT" />
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+
+        <activity
+            android:name="host.xsoft.com.pluginhost.stub.PluginStubActivitySingleTop1"
+            android:exported="true"
+            android:launchMode="singleTop"
+            android:process=":plugin">
+            <intent-filter>
+                <action android:name="host.xsoft.com.pluginhost.STUB_DEFAULT" />
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+
+        <activity
+            android:name="host.xsoft.com.pluginhost.stub.PluginStubActivitySingleTop2"
+            android:exported="true"
+            android:launchMode="singleTop"
+            android:process=":plugin">
+            <intent-filter>
+                <action android:name="host.xsoft.com.pluginhost.STUB_DEFAULT" />
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+
+        <activity
+            android:name="host.xsoft.com.pluginhost.stub.PluginStubActivitySingleTop3"
+            android:exported="true"
+            android:launchMode="singleTop"
+            android:process=":plugin">
+            <intent-filter>
+                <action android:name="host.xsoft.com.pluginhost.STUB_DEFAULT" />
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+
+        <activity
+            android:name="host.xsoft.com.pluginhost.stub.PluginStubActivitySingleTop4"
+            android:exported="true"
+            android:launchMode="singleTop"
+            android:process=":plugin">
+            <intent-filter>
+                <action android:name="host.xsoft.com.pluginhost.STUB_DEFAULT" />
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+
+        <activity
+            android:name="host.xsoft.com.pluginhost.stub.PluginStubActivitySingleTop5"
+            android:exported="true"
+            android:launchMode="singleTop"
+            android:process=":plugin">
+            <intent-filter>
+                <action android:name="host.xsoft.com.pluginhost.STUB_DEFAULT" />
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+
+        <!--
+            singleInstance 的 launchmode
+            需要注册的stub数量只需 >= 可能 同时 处于运行状态的 singleInstance 模式的Activity的数量
+            最糟糕的情况是所有的 singleInstance 模式的Activity都 同时 处于运行状态，那么这种情况下 需要注册的stub数量即为所有插件所有 singleInstance 模式的Activity的总和
+            预注册5个应该绰绰有余了
+            -->
+        <activity
+            android:name="host.xsoft.com.pluginhost.stub.PluginStubActivitySingleInstance0"
+            android:exported="true"
+            android:launchMode="singleInstance"
+            android:process=":plugin">
+            <intent-filter>
+                <action android:name="host.xsoft.com.pluginhost.STUB_DEFAULT" />
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+
+        <activity
+            android:name="host.xsoft.com.pluginhost.stub.PluginStubActivitySingleInstance1"
+            android:exported="true"
+            android:launchMode="singleInstance"
+            android:process=":plugin">
+            <intent-filter>
+                <action android:name="host.xsoft.com.pluginhost.STUB_DEFAULT" />
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+
+        <activity
+            android:name="host.xsoft.com.pluginhost.stub.PluginStubActivitySingleInstance2"
+            android:exported="true"
+            android:launchMode="singleInstance"
+            android:process=":plugin">
+            <intent-filter>
+                <action android:name="host.xsoft.com.pluginhost.STUB_DEFAULT" />
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+
+        <activity
+            android:name="host.xsoft.com.pluginhost.stub.PluginStubActivitySingleInstance3"
+            android:exported="true"
+            android:launchMode="singleInstance"
+            android:process=":plugin">
+            <intent-filter>
+                <action android:name="host.xsoft.com.pluginhost.STUB_DEFAULT" />
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+
+        <activity
+            android:name="host.xsoft.com.pluginhost.stub.PluginStubActivitySingleInstance4"
+            android:exported="true"
+            android:launchMode="singleInstance"
+            android:process=":plugin">
+            <intent-filter>
+                <action android:name="host.xsoft.com.pluginhost.STUB_DEFAULT" />
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+
+        <activity
+            android:name="host.xsoft.com.pluginhost.stub.PluginStubActivitySingleInstance5"
+            android:exported="true"
+            android:launchMode="singleInstance"
+            android:process=":plugin">
+            <intent-filter>
+                <action android:name="host.xsoft.com.pluginhost.STUB_DEFAULT" />
+                <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
         </activity>
     </application>

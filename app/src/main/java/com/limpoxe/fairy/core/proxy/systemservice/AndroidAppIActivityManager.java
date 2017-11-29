@@ -43,7 +43,7 @@ public class AndroidAppIActivityManager extends MethodProxy {
         sMethods.put("getIntentSender", new getIntentSender());
         sMethods.put("overridePendingTransition", new overridePendingTransition());
         sMethods.put("serviceDoneExecuting", new serviceDoneExecuting());
-        sMethods.put("getContentProvider", new getContentProvider());
+//        sMethods.put("getContentProvider", new getContentProvider());
 
         //暂不需要
         //sMethods.put("broadcastIntent", new broadcastIntent());

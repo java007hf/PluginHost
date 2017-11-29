@@ -1,0 +1,159 @@
+﻿<!DOCTYPE HTML>
+<html>
+<head>
+    <meta charset="utf-8"/>
+    <meta name="viewport"
+          content="width=device-width,user-scalable=no,initial-scale=1,minimum-scale=1,maximum-scale=1"/>
+    <title>心率五区间</title>
+    <meta name="author" content="mikoyin"/>
+    <meta name="keywords" content=""/>
+    <meta name="description" content=""/>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        html {
+            width: 100%;
+            height: 100%;
+        }
+
+        body {
+            margin: 0;
+            width: 100%;
+            box-sizing: border-box;
+            padding: 0px 20px 24px 20px;
+            color: rgba(0, 0, 0, 0.80);
+            font-weight: 400;
+            font-style: normal;
+        }
+
+        h1 {
+            margin-top: 24px;
+            font-weight: bold;
+            font-size: 16px;
+            letter-spacing: 0;
+            line-height: 20px;
+            text-align: center;
+        }
+
+        h2 {
+            margin-top: 24px;
+            padding-bottom: 2px;
+            font-weight: bold;
+            font-size: 16px;
+            letter-spacing: 0;
+            line-height: 20px;
+        }
+
+        h2 i {
+            font-style: normal;
+            font-size: 12px;
+            padding-left: 5px;
+        }
+
+        p {
+            font-size: 14px;
+            line-height: 21px;
+            margin-top: 8px;
+            padding-bottom: 6px;
+            text-align: justify;
+        }
+
+    </style>
+</head>
+
+<body>
+
+<div class="content">
+    <div class="language-zh">
+        <h2>1-热身区间<i>（最大心率的50%-60%）</i></h2>
+        <p>简单的跑步非常放松的状态，帮助热身、放松及协调恢复等。</p>
+        <h2>2-减脂区间<i>（最大心率的60%-70%）</i></h2>
+        <p>舒适的速度，心血管负荷低，体内脂肪燃烧最大，减脂效果最佳，同时提升运动耐力。</p>
+        <h2>3-心肺区间<i>（最大心率的70%-80%）</i></h2>
+        <p>中等的速度，有节奏的步幅，帮助提高心血管功能和配速。</p>
+        <h2>4-耐力区间<i>（最大心率的80%-90%）</i></h2>
+        <p>很快的速度，稍有不适感，肌肉乳酸积累较快，帮助提高运动强度和配速。</p>
+        <h2>5-最大区间<i>（最大心率的90%-100%）</i></h2>
+        <p>非常快的速度，呼吸与肌肉感觉非常疲劳。非专业运动员，请不要在最大区域内训练，在这里只应做短间歇训练。</p>
+    </div>
+    <div class="language-en">
+        <h2>1-Warm-up range<i>(Maximum heart rate 50%-60%)</i></h2>
+        <p>Simple jogging, in a very relaxed state, helpful to warm-up, relaxation and rehabilitation etc.</p>
+        <h2>2-Fat burning range<i>(Maximum heart rate 60%-70%)</i></h2>
+        <p>Comfortable speed, less pressure on the cardiovascular system, maximum fat combustion in the body, with the
+            best effect of fat burning.</p>
+        <h2>3-Heart and lung range<i>(Maximum heart rate 70%-80%)</i></h2>
+        <p>Moderate speed, rhythmic steps, helpful to improving heart and lung functions and pace.</p>
+        <h2>4-Muscle strength range<i>(Maximum heart rate 80%-90%)</i></h2>
+        <p>Fast speed, slight discomfort, fast accumulation of lactic acid in muscle, helpful to improving exercise
+            intensity.</p>
+        <h2>5-Maximum range<i>(Maximum heart rate 90%-100%)</i></h2>
+        <p>Very fast speed, feelings of extreme tiredness of breathing and muscle. Non-professional athletes are
+            recommended not to take training in the maximum range, but just to take short training at intervals.</p>
+    </div>
+    <div class="language-hk">
+        <h2>1-熱身區間<i>（最大心率的50%-60%）</i></h2>
+        <p>簡單的跑步非常放松的狀態，幫助熱身、放松及協調恢複等。</p>
+        <h2>2-減脂區間<i>（最大心率的60%-70%）</i></h2>
+        <p>舒適的速度，心血管負荷低，體內脂肪燃燒最大，減脂效果最佳，同時提升運動耐力。</p>
+        <h2>3-心肺區間<i>（最大心率的70%-80%）</i></h2>
+        <p>中等的速度，有節奏的步幅，幫助提高心血管功能和配速。</p>
+        <h2>4-耐力區間<i>（最大心率的80%-90%）</i></h2>
+        <p>很快的速度，稍有不適感，肌肉乳酸積累較快，幫助提高運動強度和配速。</p>
+        <h2>5-最大區間<i>（最大心率的90%-100%）</i></h2>
+        <p>非常快的速度，呼吸與肌肉感覺非常疲勞。非專業運動員，請不要在最大區域內訓練，在這裏只應做短間歇訓練。</p>
+    </div>
+</div>
+<script src="../public/comm/jquery.min.js" type="text/javascript"></script>
+<script>
+
+    (function () {
+        var URL_PARAMS;
+        $.getParam = function (str) {
+            if (!URL_PARAMS) {
+                URL_PARAMS = {};
+                var params = location.search;
+                $.each(params.substring(1).split("&"), function (i, v) {
+                    var pos = v.indexOf("=");
+                    var key = v.substring(0, pos);
+                    var val = v.substring(pos + 1);
+                    key = decodeURIComponent(key);
+                    val = decodeURIComponent(val);
+                    URL_PARAMS[key] = val;
+                })
+            }
+
+            return URL_PARAMS[str] || '';
+        };
+    })();
+
+    (function (document, window, $) {
+
+        var language = $.getParam('language');
+
+        if(language === 'zh_cn'){
+            $('.language-en').hide();
+            $('.language-hk').hide();
+            document.title = '心率五区间'
+        }else if(language === 'en'){
+            $('.language-zh').hide();
+            $('.language-hk').hide();
+            document.title = 'Heart rate range five'
+        }else if(language === 'zh_tw' || language === 'zh_hk'){
+            $('.language-zh').hide();
+            $('.language-en').hide();
+            document.title = '心率五區間'
+        }else {
+            $('.language-zh').hide();
+            $('.language-hk').hide();
+            document.title = '心率五区间'
+        }
+
+    })(document, window, $);
+
+</script>
+</body>
+</html>

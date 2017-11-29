@@ -6,6 +6,11 @@
     android:paddingLeft="20dp"
     android:paddingRight="20dp">
 
+    <com.tencent.smtt.sdk.WebView
+    android:id="@+id/webviews"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"/>
+
     <Button
         android:id="@+id/install"
         android:layout_width="wrap_content"
